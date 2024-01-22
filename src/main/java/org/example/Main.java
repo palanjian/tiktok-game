@@ -7,8 +7,11 @@ import java.util.Scanner;
 public class Main {
 
     public static String streamer = "";
+    public static RobotHandler robotHandler;
+
     public static void main(String[] args) {
         initializeConnection();
+        robotHandler = new RobotHandler();
     }
 
     public static void initializeConnection(){
@@ -21,7 +24,6 @@ public class Main {
             TikTokLive.newClient(streamer).addListener(customListener).buildAndConnect();
         }
         catch(Exception e){
-            e.printStackTrace();
             System.out.println("User not found or is offline. Try again");
             initializeConnection();
         }
