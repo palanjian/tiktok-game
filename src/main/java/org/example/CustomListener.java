@@ -20,6 +20,12 @@ public class CustomListener implements TikTokEventListener {
     public void onDisconnected(LiveClient liveClient, TikTokDisconnectedEvent event){
         System.out.println("Disconnected from server. Reason: " + event.getReason());
 
+        //to prevent getting rate limited
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @TikTokEventObserver
